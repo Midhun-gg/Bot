@@ -33,7 +33,7 @@ The application features a unique animated avatar system that responds to speech
 1. **Clone the repository**
 
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/Midhun-gg/Bot
    cd bot
    ```
 
