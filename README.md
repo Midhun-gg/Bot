@@ -1,70 +1,180 @@
-# Getting Started with Create React App
+# BOT by Comski 🎤🤖
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based AI conversation bot designed to help improve your speaking skills through interactive voice conversations. The bot features an animated avatar that responds to speech and provides real-time feedback.
 
-## Available Scripts
+## 📖 About
 
-In the project directory, you can run:
+**BOT by Comski** is an innovative language learning application that combines cutting-edge AI technology with an engaging user experience. Built as a React web application, it creates an interactive environment where users can practice speaking skills through natural conversations with an AI assistant.
 
-### `npm start`
+The application features a unique animated avatar system that responds to speech patterns, making the learning experience more engaging and realistic. Whether you're learning a new language, practicing public speaking, or simply want to improve your communication skills, this bot provides a safe, judgment-free environment to practice and grow.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Voice Interaction**: Speak naturally with the AI assistant
+- **Animated Avatar**: Dynamic avatar with blinking eyes and mouth movements that sync with speech
+- **Speech-to-Text**: Converts your voice input to text for processing
+- **Text-to-Speech**: Bot responses are converted to natural-sounding speech
+- **Conversation Flow**: Structured 5-iteration conversation system
+- **Silence Detection**: Automatically stops recording when you finish speaking
+- **Conversation Summary**: Get a summary of your conversation at the end
+- **Modern UI**: Built with Material-UI for a clean, responsive interface
 
-### `npm test`
+## 🚀 Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js (version 14 or higher)
+- npm or yarn package manager
+- A modern web browser with microphone access
+- Backend server running on `http://localhost:8000` (see Backend Requirements below)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone <your-repository-url>
+   cd bot
+   ```
 
-### `npm run eject`
+2. **Install dependencies**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the development server**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Open your browser**
+   Navigate to `http://localhost:3000` to see the application
 
-## Learn More
+### Available Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `npm start` - Runs the app in development mode
+- `npm build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm eject` - Ejects from Create React App (one-way operation)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔧 Backend Requirements
 
-### Code Splitting
+This application requires a backend server running on `http://localhost:8000` with the following endpoints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Required Endpoints
 
-### Analyzing the Bundle Size
+1. **`POST /initial-greeting`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   - Returns initial bot greeting message
+   - Response: `{ "response": "Hello! How can I help you today?" }`
 
-### Making a Progressive Web App
+2. **`POST /process-audio`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   - Processes uploaded audio files
+   - Accepts: `FormData` with audio file
+   - Returns: `{ "user_input": "transcribed text", "response": "bot response", "iteration": 1 }`
 
-### Advanced Configuration
+3. **`POST /text-to-speech`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   - Converts text to speech
+   - Accepts: `{ "text": "text to convert" }`
+   - Returns: Audio blob
 
-### Deployment
+4. **`POST /final-greeting`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   - Returns final conversation message
+   - Response: `{ "response": "Thank you for the conversation!" }`
 
-### `npm run build` fails to minify
+5. **`POST /summary-generation`**
+   - Generates conversation summary
+   - Response: `{ "response": "Here's a summary of your conversation..." }`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🎯 How to Use
+
+1. **Start Conversation**: Click the "Start" button to begin
+2. **Speak Naturally**: The bot will greet you and start listening
+3. **Voice Input**: Speak clearly into your microphone
+4. **Automatic Processing**: The bot will automatically stop recording when you finish speaking
+5. **Conversation Flow**: Continue the conversation for up to 5 iterations
+6. **Get Summary**: After 5 exchanges, click "Summarize" to get a conversation summary
+7. **Start Over**: Begin a new conversation anytime
+
+## 🎨 Avatar System
+
+The bot features a dynamic avatar with multiple states:
+
+- **Eyes**: Automatically blink every 3-6 seconds
+- **Mouth**: Animates based on speech intensity:
+  - Closed: No speech
+  - Slightly Open: Low speech level
+  - Half Open: Medium speech level
+  - Fully Open: High speech level
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 19.1.0
+- **UI Framework**: Material-UI (MUI) v7.1.1
+- **Styling**: Emotion (CSS-in-JS)
+- **Audio Processing**: Web Audio API, MediaRecorder API
+- **Build Tool**: Create React App
+- **Testing**: Jest, React Testing Library
+
+## 📁 Project Structure
+
+```
+bot/
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # React components
+│   │   ├── ChatInterface.jsx    # Main chat interface
+│   │   └── Avatar_*.png         # Avatar image assets
+│   ├── App.js             # Main application component
+│   ├── App.css            # Application styles
+│   └── index.js           # Application entry point
+├── package.json           # Dependencies and scripts
+└── README.md             # This file
+```
+
+## 🔒 Browser Compatibility
+
+- Chrome 66+
+- Firefox 60+
+- Safari 11.1+
+- Edge 79+
+
+## 🚨 Important Notes
+
+- **Microphone Permission**: The app requires microphone access to function
+- **HTTPS Required**: In production, HTTPS is required for microphone access
+- **Backend Dependency**: The app will not function without the backend server running
+- **Audio Format**: Audio is recorded in WAV format for optimal compatibility
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+
+1. Check the browser console for error messages
+2. Ensure the backend server is running on port 8000
+3. Verify microphone permissions are granted
+4. Check that all required dependencies are installed
+
+## 🔮 Future Enhancements
+
+- [ ] Multiple avatar options
+- [ ] Conversation history persistence
+- [ ] Custom conversation topics
+- [ ] Speech rate adjustment
+- [ ] Multi-language support
+- [ ] Mobile app version
+
+---
